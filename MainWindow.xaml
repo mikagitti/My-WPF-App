@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:My_WPF_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="My-WPF-App"                 
+        ResizeMode="NoResize"
+        MinWidth="800" MinHeight="450"
+        MaxWidth="800" MaxHeight="450"        
+        >
+    
+    
+    <Grid Background="#878f99">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />            
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />            
+        </Grid.RowDefinitions>
+
+
+        <!-- HEADER -->
+        <Border Background="DarkCyan"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                >
+            
+            <StackPanel Background="Coral"
+                        Margin="10"                    
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"                       
+                        Orientation="Horizontal"
+                        >
+
+                <TextBlock Text="This Is Header" 
+                           FontSize="30"                           
+                           
+                           Margin="20 20 5 20"
+                           />
+
+                <TextBlock Text="TM"
+                           Margin="0 20 20 0"/>
+                
+            </StackPanel>
+            
+        </Border>
+
+        <!-- LEFT BLOCK -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Text="LEFT" 
+                   FontSize="40"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"                   
+                   />
+
+        <!-- RIGHT BLOCK -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="RIGHT" 
+                   FontSize="40"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"                   
+                   />
+
 
     </Grid>
+    
 </Window>
