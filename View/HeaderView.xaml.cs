@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace My_WPF_App.View
 {
     /// <summary>
-    /// Interaction logic for View1.xaml
+    /// Interaction logic for HeaderView.xaml
     /// </summary>
-    public partial class View1 : UserControl
-    {        
-        public View1()
+    public partial class HeaderView : UserControl
+    {
+        public HeaderView()
         {
-            InitializeComponent();     
+            InitializeComponent();
         }
     }
 }

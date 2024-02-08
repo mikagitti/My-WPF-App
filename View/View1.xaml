@@ -5,15 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_WPF_App.View"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="400">
+             d:Height="250" 
+             d:Width="400"
+             d:Background="AliceBlue">
     <Grid>
 
-        <StackPanel Orientation="Vertical">
-        <Label Content="Name:" />
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Left">
+            
+            <Label Content="Name:"                    
+                   FontSize="20"
+                   Margin="5"/>
 
-        <TextBox Text="{Binding SharedData, UpdateSourceTrigger=PropertyChanged}" 
-                   Width="100"
-                   Height="40"/>
+            <TextBox Text="{Binding SharedData, UpdateSourceTrigger=PropertyChanged}" 
+                     Width="200"
+                     Height="30"
+                     FontSize="20"
+                     Margin="5"/>
         
         </StackPanel>
     </Grid>

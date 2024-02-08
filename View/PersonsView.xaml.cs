@@ -1,4 +1,6 @@
-﻿using System;
+﻿using My_WPF_App.Data;
+using My_WPF_App.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,15 @@ using System.Windows.Shapes;
 namespace My_WPF_App.View
 {
     /// <summary>
-    /// Interaction logic for View1.xaml
+    /// Interaction logic for PersonsView.xaml
     /// </summary>
-    public partial class View1 : UserControl
-    {        
-        public View1()
+    public partial class PersonsView : UserControl
+    {
+        public PersonsView()
         {
-            InitializeComponent();     
+            IPersonDataProvider personDataProvider = new DataProvider();
+            InitializeComponent();
+            DataContext = new PersonsViewModel(personDataProvider);
         }
     }
 }
