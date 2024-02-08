@@ -1,13 +1,5 @@
-﻿using System.Text;
+﻿using My_WPF_App.Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace My_WPF_App
 {
@@ -16,9 +8,12 @@ namespace My_WPF_App
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SharedViewModel _viewModel = new SharedViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = _viewModel;
         }
     }
 }

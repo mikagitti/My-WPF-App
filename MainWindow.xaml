@@ -4,35 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:My_WPF_App"
+        xmlns:view="clr-namespace:My_WPF_App.View"
         mc:Ignorable="d"
         Title="My-WPF-App"                 
         ResizeMode="NoResize"
-        MinWidth="800" MinHeight="450"
-        MaxWidth="800" MaxHeight="450"        
+        Height="450"
+        Width="800"
+        d:Height="400"
+        d:Width="500"
         >
-    
-    
+
+
     <Grid Background="#878f99">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition />            
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
-            <RowDefinition />            
+            <RowDefinition />
         </Grid.RowDefinitions>
 
 
         <!-- HEADER -->
+        <!-- 0 - (0, 1) -->
         <Border Background="DarkCyan"
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 >
-            
+
             <StackPanel Background="Coral"
                         Margin="10"                    
                         VerticalAlignment="Center"
@@ -48,12 +53,13 @@
 
                 <TextBlock Text="TM"
                            Margin="0 20 20 0"/>
-                
+
             </StackPanel>
-            
+
         </Border>
 
         <!-- LEFT BLOCK -->
+        <!-- 1 - 0 -->
         <TextBlock Grid.Row="1"
                    Grid.Column="0"
                    Text="LEFT" 
@@ -62,16 +68,39 @@
                    VerticalAlignment="Top"                   
                    />
 
-        <!-- RIGHT BLOCK -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="1"
-                   Text="RIGHT" 
-                   FontSize="40"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"                   
-                   />
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    Background="DarkGreen"
+                    >
+            <view:View1 />
 
+        </StackPanel>
+
+        <!-- RIGHT BLOCK -->
+        <!-- 1 - 1 -->
+        <TextBlock Grid.Row="1"
+                Grid.Column="1"
+                Text="RIGHT" 
+                FontSize="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"                   
+                />
+
+        <!-- 2 - 0 -->
+        <!-- 2 - 1 -->
+
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Background="CornflowerBlue"
+                    >
+            <view:View2 />
+            
+        </StackPanel>
+
+        
 
     </Grid>
-    
+
 </Window>
