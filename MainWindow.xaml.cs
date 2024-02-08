@@ -1,4 +1,4 @@
-﻿using My_WPF_App.Model;
+﻿using My_WPF_App.ViewModel;
 using System.Windows;
 
 namespace My_WPF_App

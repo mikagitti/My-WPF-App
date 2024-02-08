@@ -9,9 +9,22 @@
              d:Background="AliceBlue">
     <Grid>
 
-        <StackPanel Orientation="Vertical">
-        <Label Content="NAME:" />
-        <TextBlock Text="{Binding SharedData}" />
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    >
+            <Label Content="Name:"                    
+                   FontSize="20"
+                   Margin="5"
+                   />
+            
+            <TextBlock Text="{Binding SharedData}"
+                       Width="200"
+                       Height="30"
+                       FontSize="20"
+                       Margin="5"
+                       />
+        
         </StackPanel>
 
     </Grid>
