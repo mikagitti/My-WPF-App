@@ -1,4 +1,5 @@
-﻿using My_WPF_App.Data;
+﻿using My_WPF_App.Command;
+using My_WPF_App.Data;
 using My_WPF_App.Model;
 using System.Collections.ObjectModel;
 
@@ -6,30 +7,88 @@ namespace My_WPF_App.ViewModel
 {
     public class PersonsViewModel : ViewModelBase
     {
-        private readonly IPersonDataProvider _personDataProvider;
+        private readonly IPersonDataProvider? _personDataProvider = null;
 
-        public PersonsViewModel(IPersonDataProvider personDataProvider)
+        private Person? _selectedPerson;
+
+        private Person? _newPerson;
+
+        
+        public PersonsViewModel()
         {
-            _personDataProvider = personDataProvider;
-            GetPersonData();
+            _personDataProvider = new DataProvider();
+                        
+            if (!Persons.Any())
+            {
+                GetPersonData();
+            }            
+
+            AddPerson = new DelegateCommand(AddNewPerson);
+            DeletePerson = new DelegateCommand(DeletePersonFromList, CanDeletePersonFromList);            
         }
 
         public ObservableCollection<Person> Persons { get; } = new();
-        
-        public void GetPersonData()
+
+        public Person? SelectedPerson 
+        { 
+            get 
+            {
+                return _selectedPerson;
+            } 
+            set
+            {
+                _selectedPerson = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(SelectedPerson));
+                DeletePerson.RaiseCanExecuteChanged();                
+            }
+        }
+
+
+        public DelegateCommand AddPerson { get; }
+        private void AddNewPerson(object? parameter)
+        {
+            var person = new Person { Name = "New Customer" };            
+            Persons.Add(person);
+            SelectedPerson = person;
+
+            if (_newPerson != null) 
+                Persons.Add(_newPerson);
+        }
+
+
+        public DelegateCommand DeletePerson { get; }
+        private void DeletePersonFromList(object? parameter)
+        {
+            if(_selectedPerson != null)
+                Persons.Remove(_selectedPerson);            
+        }
+        private bool CanDeletePersonFromList(object? parameter)
+        {
+            if (_selectedPerson != null)
+                return !_selectedPerson.IsEmpty();
+            return false;
+        }
+
+
+
+        private void GetPersonData()
         {
             if (Persons.Any())
             {
                 return;
             }
 
-            var persons = _personDataProvider.GetPersonData();
-
-            if (persons is not null)
+            if (_personDataProvider != null)
             {
-                foreach (var person in persons)
+                var persons = _personDataProvider.GetPersonData();
+
+                if (persons is not null)
                 {
-                    Persons.Add(person);
+                    foreach (var person in persons)
+                    {
+                        Persons.Add(person);
+                    }
                 }
             }
         }

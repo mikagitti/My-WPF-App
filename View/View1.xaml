@@ -8,21 +8,47 @@
              d:Height="250" 
              d:Width="400"
              d:Background="AliceBlue">
-    <Grid>
+    <Grid Background="Beige">
 
-        <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Left">
+        <StackPanel VerticalAlignment = "Center">
+            <StackPanel Orientation="Horizontal">
             
-            <Label Content="Name:"                    
-                   FontSize="20"
-                   Margin="5"/>
+                <Label Content="Name:"                    
+                       FontSize="20"
+                       Width="100"
+                       VerticalAlignment = "Center"
+                       />
 
-            <TextBox Text="{Binding SharedData, UpdateSourceTrigger=PropertyChanged}" 
-                     Width="200"
-                     Height="30"
-                     FontSize="20"
-                     Margin="5"/>
+                <TextBox Text="{Binding SharedName, 
+                                        Mode=TwoWay, 
+                                        UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="20"
+                         Width="150"
+                         Height="30"               
+                         VerticalAlignment = "Center"
+                       />
         
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Content="Address:"
+                       FontSize="20"
+                       Width="100"
+                       VerticalAlignment = "Center"
+                       />
+
+                <TextBox Text="{Binding SharedAddress, 
+                                Mode=TwoWay, 
+                                UpdateSourceTrigger=PropertyChanged}" 
+                         FontSize="20"
+                         Width="150"
+                         Height="30"               
+                         VerticalAlignment = "Center"
+                        />
+
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </UserControl>
