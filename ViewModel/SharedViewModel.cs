@@ -1,17 +1,38 @@
-﻿namespace My_WPF_App.ViewModel
+﻿using System.Collections.ObjectModel;
+
+namespace My_WPF_App.ViewModel
 {
     public class SharedViewModel : ViewModelBase
     {
-        private string _sharedData = "David Walker";
+        private string _sharedName = "David Walker";
+        private string _sharedAddress = "Viittatie 313";
+        
+        public ObservableCollection<string> Items { get; set; }
 
-        public string SharedData
+        public SharedViewModel()
         {
-            get { return _sharedData; }
+            Items = new ObservableCollection<string>();
+        }
+
+        public string SharedName
+        {
+            get { return _sharedName; }
             set
             {
-                _sharedData = value;
-                OnPropertyChanged(nameof(SharedData));
+                _sharedName = value;
+                OnPropertyChanged(nameof(SharedName));
             }
-       }
+        }
+
+        public string SharedAddress
+        {
+            get { return _sharedAddress; }
+            set
+            {
+                _sharedAddress = value;
+                OnPropertyChanged(nameof(SharedAddress));
+            }
+        }
+
     }
 }

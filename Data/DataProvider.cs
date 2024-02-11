@@ -13,9 +13,10 @@ namespace My_WPF_App.Data
         {
             return new List<Person>
             {
-                new Person{Id=1, Name="Jaska", Address="Linkkitie 1", Postalnumber=90100, City="Oulu"},
-                new Person{Id=2, Name="Ville", Address="Kiertotie 72", Postalnumber=90200, City="Oulu"},
-                new Person{Id=3, Name="Essi", Address="Laanilantie", Postalnumber=90410, City="Oulu"},
+                new Person{Name="Jaska", Address="Linkkitie 1", PostalNumber=90100, City="Oulu"},
+                new Person{Name="Ville", Address="Kiertotie 72", PostalNumber=90200, City="Oulu"},
+                new Person{Name="Essi", Address="Laanilantie", PostalNumber=90410, City="Oulu"},
+                new Person{Name="Mervi", Address="Kaukovainionkatu 144", PostalNumber=90700, City="Oulu"}
             };
         }
     }

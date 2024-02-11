@@ -1,4 +1,5 @@
-﻿using My_WPF_App.ViewModel;
+﻿using My_WPF_App.Data;
+using My_WPF_App.ViewModel;
 using System.Windows;
 
 namespace My_WPF_App
@@ -8,12 +9,22 @@ namespace My_WPF_App
     /// </summary>
     public partial class MainWindow : Window
     {
-        private SharedViewModel _viewModel = new SharedViewModel();
+        
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = _viewModel;
+        
+        }
+
+        private void PersonsViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataProvider _personDataProvider = new();
+
+            //My_WPF_App.ViewModel.PersonsViewModel personsViewModelObject = new My_WPF_App.ViewModel.PersonsViewModel(_personDataProvider);
+            //personsViewModelObject.GetPersonData();
+
+            //PersonsViewControl.DataContext = personsViewModelObject;
         }
     }
 }

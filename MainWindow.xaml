@@ -3,17 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:My_WPF_App"
+        xmlns:viewmodel="clr-namespace:My_WPF_App.ViewModel"
         xmlns:view="clr-namespace:My_WPF_App.View"
         mc:Ignorable="d"
-        Title="My-WPF-App"                 
-        ResizeMode="NoResize"
-        Height="600"
-        Width="800"
+        Title="My-WPF-App"                         
+        Height="765"
+        Width="1024"
         d:Height="600"
         d:Width="500"
         >
 
+    <Window.Resources>
+        <viewmodel:SharedViewModel x:Key="SHARED" />
+        <viewmodel:PersonsViewModel x:Key="PeopleResource" />
+        
+    </Window.Resources>
 
     <Grid Background="#878f99">
 
@@ -25,21 +29,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
             <RowDefinition />
-            <RowDefinition Height="Auto"/>
+            
         </Grid.RowDefinitions>
 
 
-        <!-- HEADER -->
-        <!-- 0 - (0, 1) -->
-        
+        <!-- ROW 1 -->        
         <view:HeaderView Grid.Row="0"
                          Grid.Column="0"
                          Grid.ColumnSpan="2"/>
-        
 
-        <!-- LEFT BLOCK -->
-        <!-- 1 - 0 -->
+
+        <!-- ROW 2 -->        
         <TextBlock Grid.Row="1"
                    Grid.Column="0"
                    Text="LEFT" 
@@ -47,43 +49,56 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"                   
                    />
+        
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Text="RIGHT" 
+                   FontSize="40"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"                   
+                   />
 
+        
+        <!-- ROW 3 -->
         <StackPanel Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.RowSpan="2"
-                    Background="DarkGreen"
+                    Grid.Column="0"                    
+                    Background="DarkGreen"                    
                     >
             
-            <view:View1 />
+            <view:PersonsView Grid.Row="3"
+                              Grid.Column="0"
+                              DataContext="{StaticResource PeopleResource}"
+                              />
 
         </StackPanel>
 
-        <!-- RIGHT BLOCK -->
-        <!-- 1 - 1 -->
-        <TextBlock Grid.Row="1"
-                Grid.Column="1"
-                Text="RIGHT" 
-                FontSize="40"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"                   
-                />
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"                    
+                    Background="DarkGreen"                    
+                    >   
 
-        <!-- 2 - 0 -->
-        <!-- 2 - 1 -->
+            <view:PersonView Grid.Row="3"
+                             Grid.Column="0"
+                             DataContext="{StaticResource PeopleResource}"
+                             />
 
-        <StackPanel Grid.Row="2"
+        </StackPanel>
+
+
+
+        <view:View1 Grid.Row="2"
                     Grid.Column="1"
-                    Grid.RowSpan="2"
-                    Background="CornflowerBlue"
-                    >
-            <view:View2 />
+                    DataContext="{StaticResource SHARED}" 
+                    />
 
-        </StackPanel>
+        <view:View2 Grid.Row="3"
+                    Grid.Column="1"
+                    DataContext="{StaticResource SHARED}" 
+                    />
 
-        <!-- 3 - 0 -->
-        <view:PersonsView Grid.Row="3"
-                          Grid.Column="0"
-                          Grid.RowSpan="2" />
+        
+
+
 
     </Grid>
 
