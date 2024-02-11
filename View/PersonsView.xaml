@@ -61,7 +61,5 @@
                       FontSize="18"
                       Height="220"
                       />
-        
-    
     </Grid>
 </UserControl>

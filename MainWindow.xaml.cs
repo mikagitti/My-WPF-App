@@ -9,22 +9,10 @@ namespace My_WPF_App
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-
         public MainWindow()
         {
             InitializeComponent();
         
-        }
-
-        private void PersonsViewControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            DataProvider _personDataProvider = new();
-
-            //My_WPF_App.ViewModel.PersonsViewModel personsViewModelObject = new My_WPF_App.ViewModel.PersonsViewModel(_personDataProvider);
-            //personsViewModelObject.GetPersonData();
-
-            //PersonsViewControl.DataContext = personsViewModelObject;
-        }
+        }         
     }
 }
