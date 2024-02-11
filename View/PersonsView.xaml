@@ -51,18 +51,17 @@
     </UserControl.Resources>
     
     <Grid>
-        <StackPanel>            
+        
             <ListView ItemsSource="{Binding Persons}"
                       SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
                       ItemTemplate="{StaticResource PersonListTemplate}"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                      VerticalAlignment="Top"
-                      
-                      Height="200"
-                      Margin="10"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      VerticalAlignment="Top"                                                                  
                       FontSize="18"
+                      Height="220"
                       />
-        </StackPanel>
+        
     
     </Grid>
 </UserControl>

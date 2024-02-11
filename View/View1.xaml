@@ -8,7 +8,7 @@
              d:Height="250" 
              d:Width="400"
              d:Background="AliceBlue">
-    <Grid Background="Beige">
+    <Grid Background="#D7D7D7">
 
         <StackPanel VerticalAlignment = "Center">
             <StackPanel Orientation="Horizontal">

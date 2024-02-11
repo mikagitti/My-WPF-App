@@ -9,8 +9,8 @@
         Title="My-WPF-App"                         
         Height="765"
         Width="1024"
-        d:Height="600"
-        d:Width="500"
+        
+        WindowStartupLocation="CenterScreen"
         >
 
     <Window.Resources>
@@ -29,8 +29,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             
         </Grid.RowDefinitions>
 
@@ -58,48 +58,28 @@
                    VerticalAlignment="Top"                   
                    />
 
-        
+
         <!-- ROW 3 -->
-        <StackPanel Grid.Row="2"
-                    Grid.Column="0"                    
-                    Background="DarkGreen"                    
-                    >
-            
-            <view:PersonsView Grid.Row="3"
-                              Grid.Column="0"
-                              DataContext="{StaticResource PeopleResource}"
-                              />
-
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="5 0 5 0" >
+            <view:PersonsView DataContext="{StaticResource PeopleResource}"/>
         </StackPanel>
-
-        <StackPanel Grid.Row="3"
-                    Grid.Column="0"                    
-                    Background="DarkGreen"                    
-                    >   
-
-            <view:PersonView Grid.Row="3"
-                             Grid.Column="0"
-                             DataContext="{StaticResource PeopleResource}"
-                             />
-
-        </StackPanel>
-
-
 
         <view:View1 Grid.Row="2"
                     Grid.Column="1"
                     DataContext="{StaticResource SHARED}" 
                     />
 
+        <!-- ROW 4 -->
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="0" >
+            <view:PersonView DataContext="{StaticResource PeopleResource}"/>
+        </StackPanel>
+
         <view:View2 Grid.Row="3"
                     Grid.Column="1"
                     DataContext="{StaticResource SHARED}" 
                     />
-
         
-
-
-
     </Grid>
 
 </Window>
