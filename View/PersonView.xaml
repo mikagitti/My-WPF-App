@@ -8,17 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="450">
 
     <UserControl.Resources>
-        <Style x:Key="LabelStyle" TargetType="Label">
-            <Setter Property="Foreground" Value="DarkBlue"/>
-            <Setter Property="Margin" Value="10 0 10 0"/>
-            <Setter Property="FontSize" Value="18"/>
-        </Style>
-
-        <Style x:Key="TextBoxStyle" TargetType="TextBox">
-            <Setter Property="Foreground" Value="DarkBlue"/>
-            <Setter Property="Margin" Value="10 0 10 0"/>
-            <Setter Property="FontSize" Value="18"/>
-        </Style>
 
     </UserControl.Resources>
 
@@ -54,6 +43,7 @@
 
             <TextBox Text="{Binding SelectedPerson.PostalNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Style="{StaticResource TextBoxStyle}"
+                     MaxLength="5"
                      />
 
 
@@ -73,9 +63,8 @@
 
                 <Button Style="{StaticResource StylishButton}"
                         Width="100"
-                        Margin="10"
-                        Command="{Binding AddPerson}"
-                        CommandParameter="HEI"
+                        Margin="10"                        
+                        Click="AddButton_Click"
                         >
                     <TextBlock TextAlignment="Center">
                         Add new <LineBreak />

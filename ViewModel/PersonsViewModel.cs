@@ -8,60 +8,68 @@ namespace My_WPF_App.ViewModel
     public class PersonsViewModel : ViewModelBase
     {
         private readonly IPersonDataProvider? _personDataProvider = null;
-
         private Person? _selectedPerson;
 
-        private Person? _newPerson;
-
-        
         public PersonsViewModel()
         {
             _personDataProvider = new DataProvider();
-                        
+
             if (!Persons.Any())
             {
                 GetPersonData();
-            }            
+            }
 
-            AddPerson = new DelegateCommand(AddNewPerson);
-            DeletePerson = new DelegateCommand(DeletePersonFromList, CanDeletePersonFromList);            
+            AddPerson = new DelegateCommand(AddNewNewPerson);
+            DeletePerson = new DelegateCommand(DeletePersonFromList, CanDeletePersonFromList);
         }
 
         public ObservableCollection<Person> Persons { get; } = new();
-
-        public Person? SelectedPerson 
-        { 
-            get 
+        
+        public Person? SelectedPerson
+        {
+            get
             {
                 return _selectedPerson;
-            } 
+            }
             set
             {
                 _selectedPerson = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(SelectedPerson));
-                DeletePerson.RaiseCanExecuteChanged();                
+                DeletePerson.RaiseCanExecuteChanged();
             }
         }
 
 
         public DelegateCommand AddPerson { get; }
+
+        private void AddNewNewPerson(object? parameter)
+        {
+            if(parameter == null)
+            {
+                return;
+            }
+
+            Person? person = (Person)parameter;
+            Persons.Add(person);
+        }
+        /*
         private void AddNewPerson(object? parameter)
         {
-            var person = new Person { Name = "New Customer" };            
+            var person = new Person { Name = "New Customer" };
             Persons.Add(person);
             SelectedPerson = person;
 
-            if (_newPerson != null) 
+            if (_newPerson != null)
                 Persons.Add(_newPerson);
         }
-
+        */
 
         public DelegateCommand DeletePerson { get; }
         private void DeletePersonFromList(object? parameter)
         {
-            if(_selectedPerson != null)
-                Persons.Remove(_selectedPerson);            
+            if (_selectedPerson != null)
+                Persons.Remove(_selectedPerson);
         }
         private bool CanDeletePersonFromList(object? parameter)
         {
@@ -91,6 +99,12 @@ namespace My_WPF_App.ViewModel
                     }
                 }
             }
+        }
+
+        internal void AddNewPerson(string name = "", string address="", int age = 0, string city = "")
+        {
+            var person = new Person { Name = name, Address = address, PostalNumber = age, City = city};
+            AddNewNewPerson(person);
         }
     }
 }
