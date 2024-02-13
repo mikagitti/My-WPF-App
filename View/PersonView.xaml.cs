@@ -1,20 +1,6 @@
-﻿using My_WPF_App.Model;
-using My_WPF_App.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using My_WPF_App.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace My_WPF_App.View
 {
@@ -27,11 +13,13 @@ namespace My_WPF_App.View
             InitializeComponent();        
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void Add_Button_Click(object sender, RoutedEventArgs e)
         {       
+            PersonsViewModel? viewModel = DataContext as PersonsViewModel;
+
+            AddPersonView addPersonWindow = new AddPersonView(viewModel);
+            addPersonWindow.Show();
             /*
-             ToDo: Need to write code so dialog dosen't close before user gives permission to close.
-            */
 
             AddPersonView dialog = new AddPersonView();            
             if (dialog.ShowDialog() == true)             
@@ -63,6 +51,8 @@ namespace My_WPF_App.View
                     viewModel.AddNewPerson(name, address, intpostalnumber, city);
                 }
             }
+
+            */
         }
     }
 }

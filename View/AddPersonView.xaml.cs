@@ -21,19 +21,23 @@ namespace My_WPF_App.View
     /// </summary>
     public partial class AddPersonView : Window
     {
+        private PersonsViewModel _viewModel;
+
         public string? Name { get; set; }
         public string? Address { get; set; }
         public int PostalNumber { get; set; }
         public string? City { get; set; }        
 
 
-        public AddPersonView()
+        public AddPersonView(PersonsViewModel viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            DataContext = _viewModel;
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
             Name = tbName.Text;
             Address = tbAddress.Text;
@@ -47,9 +51,26 @@ namespace My_WPF_App.View
             {
                 PostalNumber = int.Parse(tbPostalNumber.Text);
             }
-            
-                        
-            this.DialogResult = true;
+
+            if (string.IsNullOrEmpty(Name))
+            {
+                var result = MessageBox.Show("Some values where incorrect! Wanna try again?", "Something went wrong", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.No)
+                {
+                    this.Close();
+                }
+
+                return;
+            }
+
+            if (_viewModel != null)
+            {
+                _viewModel.AddNewPerson(Name, Address, PostalNumber, City);
+            }
+
+            this.Close();
+             
         }
     }
 }

@@ -19,7 +19,7 @@ namespace My_WPF_App.ViewModel
                 GetPersonData();
             }
 
-            AddPerson = new DelegateCommand(AddNewNewPerson);
+            AddPerson = new DelegateCommand(AddNewPerson);
             DeletePerson = new DelegateCommand(DeletePersonFromList, CanDeletePersonFromList);
         }
 
@@ -43,7 +43,7 @@ namespace My_WPF_App.ViewModel
 
         public DelegateCommand AddPerson { get; }
 
-        private void AddNewNewPerson(object? parameter)
+        private void AddNewPerson(object? parameter)
         {
             if(parameter == null)
             {
@@ -53,17 +53,7 @@ namespace My_WPF_App.ViewModel
             Person? person = (Person)parameter;
             Persons.Add(person);
         }
-        /*
-        private void AddNewPerson(object? parameter)
-        {
-            var person = new Person { Name = "New Customer" };
-            Persons.Add(person);
-            SelectedPerson = person;
-
-            if (_newPerson != null)
-                Persons.Add(_newPerson);
-        }
-        */
+    
 
         public DelegateCommand DeletePerson { get; }
         private void DeletePersonFromList(object? parameter)
@@ -104,7 +94,7 @@ namespace My_WPF_App.ViewModel
         internal void AddNewPerson(string name = "", string address="", int age = 0, string city = "")
         {
             var person = new Person { Name = name, Address = address, PostalNumber = age, City = city};
-            AddNewNewPerson(person);
+            AddNewPerson(person);
         }
     }
 }
