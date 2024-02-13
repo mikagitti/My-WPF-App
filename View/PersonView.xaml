@@ -64,7 +64,7 @@
                 <Button Style="{StaticResource StylishButton}"
                         Width="100"
                         Margin="10"                        
-                        Click="AddButton_Click"
+                        Click="Add_Button_Click"
                         >
                     <TextBlock TextAlignment="Center">
                         Add new <LineBreak />

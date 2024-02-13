@@ -53,7 +53,7 @@
     <Grid>
         
             <ListView ItemsSource="{Binding Persons}"
-                      SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedPerson, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       ItemTemplate="{StaticResource PersonListTemplate}"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
